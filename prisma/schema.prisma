@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -14,9 +14,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model product{
+model User {
   id Int @id @default(autoincrement())
   name String
-  price Float
+  email String @unique
+  points Int @default(0)
   createdAt DateTime @default(now())
 }

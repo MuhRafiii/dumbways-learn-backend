@@ -1,3 +1,3 @@
-Day 2 - Express + Prisma Basic CRUD - Checkpoint 1
+Day 4 - Prisma Transaction and Middleware - Checkpoint 1
 
-(Case Products)
+(Case Send Point User)

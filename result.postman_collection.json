@@ -1,18 +1,27 @@
 {
 	"info": {
-		"_postman_id": "a967e67c-8747-4125-8a02-fa4ac338cf13",
-		"name": "Backend - Day 2 - Checkpoint 1",
+		"_postman_id": "30649c35-6890-4d28-a8fb-7d2eedf147dd",
+		"name": "Backend - Day 4 - Checkpoint 1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "45820475"
 	},
 	"item": [
 		{
-			"name": "/products",
+			"name": "/transfer-points",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"senderId\": 3,\r\n    \"receiverId\": 1,\r\n    \"amount\": 150\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/products",
+					"raw": "http://localhost:3000/api/v1/transfer-points",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -21,18 +30,27 @@
 					"path": [
 						"api",
 						"v1",
-						"products"
+						"transfer-points"
 					]
 				}
 			},
 			"response": [
 				{
-					"name": "read - success",
+					"name": "success - transfer points",
 					"originalRequest": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"senderId\": 3,\r\n    \"receiverId\": 1,\r\n    \"amount\": 150\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:3000/api/v1/products",
+							"raw": "http://localhost:3000/api/v1/transfer-points",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -41,7 +59,7 @@
 							"path": [
 								"api",
 								"v1",
-								"products"
+								"transfer-points"
 							]
 						}
 					},
@@ -59,15 +77,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "163"
+							"value": "38"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"a3-Tz+qZ9GYvCOsdOQ4kzw0SjFrTsc\""
+							"value": "W/\"26-pRp5h5RCvroxjiv+ZAqqJq6jwWE\""
 						},
 						{
 							"key": "Date",
-							"value": "Tue, 08 Jul 2025 00:46:10 GMT"
+							"value": "Tue, 08 Jul 2025 01:55:26 GMT"
 						},
 						{
 							"key": "Connection",
@@ -79,94 +97,24 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Product 1\",\n        \"price\": 75000,\n        \"createdAt\": \"2025-06-26T04:17:34.960Z\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Product 3\",\n        \"price\": 39000,\n        \"createdAt\": \"2025-06-26T04:18:18.244Z\"\n    }\n]"
-				}
-			]
-		},
-		{
-			"name": "/product/:id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/api/v1/product/5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"product",
-						"5"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "read - success",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/api/v1/product/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"v1",
-								"product",
-								"1"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "80"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"50-9P8ibrDtJ3ee99RpKUEhsANqrnY\""
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 08 Jul 2025 00:48:51 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": 1,\n    \"name\": \"Product 1\",\n    \"price\": 75000,\n    \"createdAt\": \"2025-06-26T04:17:34.960Z\"\n}"
+					"body": "{\n    \"message\": \"Poin berhasil ditransfer\"\n}"
 				},
 				{
-					"name": "error - not found",
+					"name": "error - transfer points < 1",
 					"originalRequest": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"senderId\": 3,\r\n    \"receiverId\": 1,\r\n    \"amount\": -150\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:3000/api/v1/product/5",
+							"raw": "http://localhost:3000/api/v1/transfer-points",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -175,8 +123,71 @@
 							"path": [
 								"api",
 								"v1",
-								"product",
-								"5"
+								"transfer-points"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "84"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"54-aR5al5AzkhLX2RWVGcl7MGJmN0Y\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Jul 2025 02:04:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 400,\n    \"status\": \"error\",\n    \"message\": \"Jumlah poin harus lebih besar dari 0\"\n}"
+				},
+				{
+					"name": "error - user not found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"senderId\": 15,\r\n    \"receiverId\": 1,\r\n    \"amount\": 150\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/transfer-points",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"transfer-points"
 							]
 						}
 					},
@@ -194,15 +205,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "29"
+							"value": "81"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"1d-KH4ngqV3S/XmJmUEKpwjFfjZ2wg\""
+							"value": "W/\"51-NSb3aqF7Ai5Tsq7kqUXhRBU6gHU\""
 						},
 						{
 							"key": "Date",
-							"value": "Tue, 08 Jul 2025 00:49:16 GMT"
+							"value": "Tue, 08 Jul 2025 02:07:01 GMT"
 						},
 						{
 							"key": "Connection",
@@ -214,47 +225,16 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"error\": \"Product not found\"\n}"
-				}
-			]
-		},
-		{
-			"name": "/product",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Product 5\",\r\n    \"price\": 21500\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"body": "{\n    \"statusCode\": 404,\n    \"status\": \"error\",\n    \"message\": \"Pengguna pengirim tidak ditemukan\"\n}"
 				},
-				"url": {
-					"raw": "http://localhost:3000/api/v1/product",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"product"
-					]
-				}
-			},
-			"response": [
 				{
-					"name": "create - success",
+					"name": "error - not enough points",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Product 4\",\r\n    \"price\": 44000\r\n}",
+							"raw": "{\r\n    \"senderId\": 3,\r\n    \"receiverId\": 1,\r\n    \"amount\": 15000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -262,7 +242,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/v1/product",
+							"raw": "http://localhost:3000/api/v1/transfer-points",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -271,12 +251,12 @@
 							"path": [
 								"api",
 								"v1",
-								"product"
+								"transfer-points"
 							]
 						}
 					},
-					"status": "Created",
-					"code": 201,
+					"status": "Bad Request",
+					"code": 400,
 					"_postman_previewlanguage": "json",
 					"header": [
 						{
@@ -289,15 +269,15 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "80"
+							"value": "77"
 						},
 						{
 							"key": "ETag",
-							"value": "W/\"50-wiigixWUusDeFY8+6SSvBcVYKJ0\""
+							"value": "W/\"4d-dh8BnNTyx8bRMwiVvFxdiWugzvQ\""
 						},
 						{
 							"key": "Date",
-							"value": "Tue, 08 Jul 2025 00:52:47 GMT"
+							"value": "Tue, 08 Jul 2025 02:03:35 GMT"
 						},
 						{
 							"key": "Connection",
@@ -309,187 +289,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"id\": 8,\n    \"name\": \"Product 4\",\n    \"price\": 44000,\n    \"createdAt\": \"2025-07-08T00:52:46.946Z\"\n}"
-				}
-			]
-		},
-		{
-			"name": "product/:id",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"price\": 38500\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/v1/product/3",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"product",
-						"3"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "update - success",
-					"originalRequest": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"price\": 38000\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/v1/product/3",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"v1",
-								"product",
-								"3"
-							]
-						}
-					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "80"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"50-23mrBRSBAKocf0VzzuXWcxi6f5M\""
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 08 Jul 2025 00:56:52 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": 3,\n    \"name\": \"Product 3\",\n    \"price\": 38000,\n    \"createdAt\": \"2025-06-26T04:18:18.244Z\"\n}"
-				}
-			]
-		},
-		{
-			"name": "product/:id",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/api/v1/product/8",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"product",
-						"8"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "delete - success",
-					"originalRequest": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/api/v1/product/8",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"v1",
-								"product",
-								"8"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "42"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"2a-a+2htZNpkCDaj0ausIFBiheaYZ4\""
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 08 Jul 2025 00:59:26 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [
-						{
-							"expires": "Invalid Date"
-						}
-					],
-					"body": "{\n    \"message\": \"Product deleted successfully\"\n}"
+					"body": "{\n    \"statusCode\": 400,\n    \"status\": \"error\",\n    \"message\": \"Poin pengirim tidak mencukupi\"\n}"
 				}
 			]
 		}
