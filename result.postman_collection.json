@@ -1,38 +1,180 @@
 {
 	"info": {
-		"_postman_id": "3efb317e-b311-4475-a7a8-d95065b14134",
-		"name": "Backend - Day 1 - Checkpoint 1",
+		"_postman_id": "d8d6d8fa-7fcc-4b50-a773-ce3a59a13029",
+		"name": "Backend - Day 1 - Checkpoint 2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "45820475"
 	},
 	"item": [
 		{
-			"name": "posts",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/api/v1/posts",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"posts"
-					]
-				}
-			},
-			"response": [
+			"name": "product",
+			"item": [
 				{
-					"name": "getPosts",
-					"originalRequest": {
+					"name": "/product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Produk Ketiga\",\r\n    \"desc\": \"Ini adalah produk ketiga\",\r\n    \"price\": 10500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "createProduct - success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Produk Pertama\",\r\n    \"desc\": \"Ini adalah produk pertama\",\r\n    \"price\": 30000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/product",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"product"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-E1AqvkKroLflJuSHmaKTqwrXyv8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 07 Jul 2025 23:58:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product berhasil ditambahkan\"\n}"
+						},
+						{
+							"name": "error - required",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Produk Pertama\",\r\n    \"price\": 30000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/product",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"product"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25-Dv/BDZHv1CNhco4VgFnk8wqD0p8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 07 Jul 2025 23:59:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Semua field harus diisi\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/products",
+					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/v1/posts",
+							"raw": "http://localhost:3000/api/v1/products",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -41,85 +183,76 @@
 							"path": [
 								"api",
 								"v1",
-								"posts"
+								"products"
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "133"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"85-tNXermnccho1vGuWGzsiBCDiR/E\""
-						},
-						{
-							"key": "Date",
-							"value": "Mon, 07 Jul 2025 23:16:09 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
+							"name": "getProducts - success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "241"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f1-waGsdkR+8Zzql0mbslD0oPIhCVc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Jul 2025 00:01:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Produk Pertama\",\n        \"desc\": \"Ini adalah produk pertama\",\n        \"price\": 30000\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Produk Kedua\",\n        \"desc\": \"Ini adalah produk kedua\",\n        \"price\": 53000\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Produk Ketiga\",\n        \"desc\": \"Ini adalah produk ketiga\",\n        \"price\": 10500\n    }\n]"
 						}
-					],
-					"cookie": [],
-					"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Post pertama\",\n        \"content\": \"Ini adalah post pertama\"\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Post kedua\",\n        \"content\": \"Ini adalah post kedua\"\n    }\n]"
-				}
-			]
-		},
-		{
-			"name": "createPost",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Post Ketiga\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/v1/post",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"post"
 					]
-				}
-			},
-			"response": [
+				},
 				{
-					"name": "createPost",
-					"originalRequest": {
-						"method": "POST",
+					"name": "/product/:id",
+					"request": {
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Post Ketiga\",\r\n    \"content\": \"Ini adalah post ketiga\"\r\n}",
+							"raw": "{\r\n    \"price\": 11500\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -127,7 +260,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/v1/post",
+							"raw": "http://localhost:3000/api/v1/product/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -136,208 +269,155 @@
 							"path": [
 								"api",
 								"v1",
-								"post"
-							]
-						}
-					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "107"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"6b-mldpGNdG+IUV0YZf/S/y3v8zkwo\""
-						},
-						{
-							"key": "Date",
-							"value": "Mon, 07 Jul 2025 23:19:05 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": \"Post berhasil dibuat\",\n    \"data\": {\n        \"id\": 3,\n        \"title\": \"Post Ketiga\",\n        \"content\": \"Ini adalah post ketiga\"\n    }\n}"
-				},
-				{
-					"name": "required-error",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Post Ketiga\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/v1/post",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"v1",
-								"post"
-							]
-						}
-					},
-					"status": "Bad Request",
-					"code": 400,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "43"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"2b-vo4JwxHNnMK+LT3EN1fgkMG8nOY\""
-						},
-						{
-							"key": "Date",
-							"value": "Mon, 07 Jul 2025 23:20:44 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": \"Title dan content harus diisi\"\n}"
-				}
-			]
-		},
-		{
-			"name": "deletePost",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Post Ketiga\"\r\n}"
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/v1/post/5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"v1",
-						"post",
-						"5"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "deletePost",
-					"originalRequest": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Post Ketiga\"\r\n}"
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/v1/post/2",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"v1",
-								"post",
+								"product",
 								"2"
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "X-Powered-By",
-							"value": "Express"
+							"name": "updateProduct - success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"price\": 11500\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/product/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-PeFqc2Qfv+tSuwHfJ1wrkkiDSm0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Jul 2025 00:05:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product berhasil diperbarui\"\n}"
 						},
 						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "35"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"23-GTqxcon1MZZlO3hEfBpel+ZoCVc\""
-						},
-						{
-							"key": "Date",
-							"value": "Mon, 07 Jul 2025 23:22:18 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
+							"name": "error - not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"price\": 11500\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/product/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"5"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25-2cFGKZHUpdOEXfBDmgH5oEBRkPA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Jul 2025 00:05:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product tidak ditemukan\"\n}"
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": \"Post berhasil dihapus\"\n}"
+					]
 				},
 				{
-					"name": "not-found-error",
-					"originalRequest": {
+					"name": "New Request",
+					"request": {
 						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Post Ketiga\"\r\n}"
+							"raw": "{\r\n    \"price\": 11500\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/v1/post/5",
+							"raw": "http://localhost:3000/api/v1/product/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -346,46 +426,876 @@
 							"path": [
 								"api",
 								"v1",
-								"post",
+								"product",
 								"5"
 							]
 						}
 					},
-					"status": "Not Found",
-					"code": 404,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "X-Powered-By",
-							"value": "Express"
+							"name": "deleteProduct - success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"price\": 11500\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/product/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "38"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"26-7jDkmrW5FC0vblskTc8EQ/c4XAg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Jul 2025 00:06:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product berhasil dihapus\"\n}"
 						},
 						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "34"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"22-1fixw3hT1joU3ufXJ7x/BpTArCg\""
-						},
-						{
-							"key": "Date",
-							"value": "Mon, 07 Jul 2025 23:23:52 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
+							"name": "error - not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"price\": 11500\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/product/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"product",
+										"5"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25-2cFGKZHUpdOEXfBDmgH5oEBRkPA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Jul 2025 00:07:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product tidak ditemukan\"\n}"
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"message\": \"Post tidak ditemukan\"\n}"
+					]
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "/order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"productId\": 1,\r\n            \"qty\": 5\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v2/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v2",
+								"order"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "createOrder - success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"productId\": 2,\r\n            \"qty\": 3\r\n        },\r\n        {\r\n            \"productId\": 3,\r\n            \"qty\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v2/order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v2",
+										"order"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "265"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"109-q1q3Iw40OxbHjgDsfZ08IuweI2s\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Jul 2025 00:15:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Order berhasil dibuat\",\n    \"data\": {\n        \"id\": 1,\n        \"items\": [\n            {\n                \"productId\": 2,\n                \"productName\": \"Produk Kedua\",\n                \"productPrice\": 53000,\n                \"qty\": 3,\n                \"subTotal\": 159000\n            },\n            {\n                \"productId\": 3,\n                \"productName\": \"Produk Ketiga\",\n                \"productPrice\": 20500,\n                \"qty\": 1,\n                \"subTotal\": 20500\n            }\n        ],\n        \"totalPrice\": 179500\n    }\n}"
+						},
+						{
+							"name": "error - not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"productId\": 5,\r\n            \"qty\": 3\r\n        },\r\n        {\r\n            \"productId\": 3,\r\n            \"qty\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v2/order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v2",
+										"order"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-iwZhdsbIIVQCew5LVVVWAHCdf84\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Jul 2025 00:17:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product dengan ID 5 tidak ditemukan\"\n}"
+						},
+						{
+							"name": "error - required",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": 1,\r\n    \"qty\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v2/order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v2",
+										"order"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-w8Sj98V1eK+MVrremW9cOUGp1wA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Jul 2025 00:18:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Items harus diisi dan berupa array\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"productId\": 5,\r\n            \"qty\": 3\r\n        },\r\n        {\r\n            \"productId\": 3,\r\n            \"qty\": 1\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v2/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v2",
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getOrders - success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"productId\": 5,\r\n            \"qty\": 3\r\n        },\r\n        {\r\n            \"productId\": 3,\r\n            \"qty\": 1\r\n        }\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v2/orders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v2",
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "357"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"165-L+ckfIVtI6UNCgn9QO+Rfd9kVxM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Jul 2025 00:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"items\": [\n            {\n                \"productId\": 2,\n                \"productName\": \"Produk Kedua\",\n                \"productPrice\": 53000,\n                \"qty\": 3,\n                \"subTotal\": 159000\n            },\n            {\n                \"productId\": 3,\n                \"productName\": \"Produk Ketiga\",\n                \"productPrice\": 20500,\n                \"qty\": 1,\n                \"subTotal\": 20500\n            }\n        ],\n        \"totalPrice\": 179500\n    },\n    {\n        \"id\": 2,\n        \"items\": [\n            {\n                \"productId\": 1,\n                \"productName\": \"Produk Pertama\",\n                \"productPrice\": 30000,\n                \"qty\": 5,\n                \"subTotal\": 150000\n            }\n        ],\n        \"totalPrice\": 150000\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "/order/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"productId\": 7,\r\n            \"qty\": 5\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v2/order/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v2",
+								"order",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "updateOrder - success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"productId\": 3,\r\n            \"qty\": 5\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v2/order/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v2",
+										"order",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "178"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b2-seCVgLbkZdxEla3mrVI/zvFLMzE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Jul 2025 00:24:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Order berhasil diperbarui\",\n    \"data\": {\n        \"id\": 2,\n        \"items\": [\n            {\n                \"productId\": 3,\n                \"productName\": \"Produk Ketiga\",\n                \"productPrice\": 20500,\n                \"qty\": 5,\n                \"subTotal\": 102500\n            }\n        ],\n        \"totalPrice\": 102500\n    }\n}"
+						},
+						{
+							"name": "error - not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"productId\": 7,\r\n            \"qty\": 5\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v2/order/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v2",
+										"order",
+										"3"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23-CilwUssN0USZbldtOB6wO2sJdWI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Jul 2025 00:29:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Order tidak ditemukan\"\n}"
+						},
+						{
+							"name": "error - required",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": 3,\r\n    \"qty\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v2/order/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v2",
+										"order",
+										"2"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-w8Sj98V1eK+MVrremW9cOUGp1wA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Jul 2025 00:26:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Items harus diisi dan berupa array\"\n}"
+						},
+						{
+							"name": "error - products not found",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"productId\": 7,\r\n            \"qty\": 5\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v2/order/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v2",
+										"order",
+										"2"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-6s6BnZMM80KAePlbTEJjLCtCRP4\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Jul 2025 00:27:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product dengan ID 7 tidak ditemukan\"\n}"
+						}
+					]
+				},
+				{
+					"name": "order/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v2/order/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v2",
+								"order",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "deleteOrder - success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v2/order/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v2",
+										"order",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-uddDnNeVDHvInsTgnl/T3RwFgIY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Jul 2025 00:31:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Order berhasil dihapus\"\n}"
+						},
+						{
+							"name": "error - not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v2/order/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v2",
+										"order",
+										"3"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"23-CilwUssN0USZbldtOB6wO2sJdWI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 08 Jul 2025 00:32:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Order tidak ditemukan\"\n}"
+						}
+					]
 				}
 			]
 		}
