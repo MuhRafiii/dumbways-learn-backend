@@ -1,19 +1,16 @@
 import dotenv from "dotenv";
 import express from "express";
-import { errorHandler } from "./middlewares/error-handler";
-import stockRoute from "./routes/stocks";
+import authRoute from "./routes/auth";
+import productRoute from "./routes/product";
 
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
 
 app.use(express.json());
+app.use("/auth", authRoute);
+app.use("/suppliers", productRoute);
 
-app.use("/api/v1", stockRoute);
-
-app.use(errorHandler);
-
-app.listen(PORT, () => {
-  console.log("Server is running on port ", PORT);
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
