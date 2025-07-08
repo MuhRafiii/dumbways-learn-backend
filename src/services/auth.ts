@@ -17,7 +17,11 @@ export async function registerUser(
     data: { email, password: hashed, role },
   });
 
-  return { id: user.id, email: user.email, role: user.role };
+  return {
+    id: user.id,
+    email: user.email,
+    role: user.role,
+  };
 }
 
 export async function loginUser(email: string, password: string) {
@@ -27,7 +31,7 @@ export async function loginUser(email: string, password: string) {
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) throw new Error("Wrong password");
 
-  const token = signToken({ id: user.id, email: user.email, role: user.role });
+  const token = signToken({ id: user.id, role: user.role });
   return { token };
 }
 
@@ -40,18 +44,27 @@ export async function loginSupplier(email: string, password: string) {
 
   if (user.role !== "supplier") throw new Error("User is not a supplier");
 
-  const token = signToken({ id: user.id, email: user.email, role: user.role });
+  const token = signToken({ id: user.id, role: user.role });
   return { token };
 }
 
-export async function resetPassword(email: string, password: string) {
+export async function uploadProfile(email: string, picture: string) {
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) throw new Error("User not found");
 
-  const newPasswordHashed = await bcrypt.hash(password, 10);
+  await prisma.profile.create({
+    data: { email, picture },
+  });
+}
+
+export async function resetPassword(email: string, newPassword: string) {
+  const user = await prisma.user.findUnique({ where: { email } });
+  if (!user) throw new Error("User not found");
+
+  const hashed = await bcrypt.hash(newPassword, 10);
 
   await prisma.user.update({
     where: { id: user.id },
-    data: { password: newPasswordHashed },
+    data: { password: hashed },
   });
 }

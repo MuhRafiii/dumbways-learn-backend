@@ -134,6 +134,18 @@ exports.Prisma.ProductScalarFieldEnum = {
   stocks: 'stocks'
 };
 
+exports.Prisma.ProfileScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  picture: 'picture'
+};
+
+exports.Prisma.ImageScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  picture: 'picture'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -144,10 +156,17 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Product: 'Product'
+  Product: 'Product',
+  Profile: 'Profile',
+  Image: 'Image'
 };
 
 /**

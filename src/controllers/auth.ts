@@ -4,11 +4,13 @@ import {
   loginUser,
   registerUser,
   resetPassword,
+  uploadProfile,
 } from "../services/auth";
 import {
   loginSchema,
   registerSchema,
   resetPasswordSchema,
+  uploadProfileSchema,
 } from "../validation/auth";
 
 export async function handleRegister(req: Request, res: Response) {
@@ -54,6 +56,28 @@ export async function handleSupplierLogin(req: Request, res: Response) {
   }
 }
 
+export async function handleUploadProfile(req: Request, res: Response) {
+  try {
+    const { error } = uploadProfileSchema.validate(req.body);
+    if (error) {
+      res.status(400).json({ message: error.message });
+      return;
+    }
+
+    if (!req.file) {
+      res.status(400).json({ message: "No file uploaded" });
+      return;
+    }
+
+    const { email } = req.body;
+    const picture = req.file.filename;
+    await uploadProfile(email, picture);
+    res.json({ message: "Profile picture uploaded" });
+  } catch (err: any) {
+    res.status(400).json({ message: err.message });
+  }
+}
+
 export async function handleResetPassword(req: Request, res: Response) {
   try {
     const { error } = resetPasswordSchema.validate(req.body);
@@ -62,8 +86,8 @@ export async function handleResetPassword(req: Request, res: Response) {
       return;
     }
 
-    const { email, password } = req.body;
-    await resetPassword(email, password);
+    const { email, newPassword } = req.body;
+    await resetPassword(email, newPassword);
     res.json({ message: "Password reset success" });
   } catch (err: any) {
     res.status(400).json({ message: err.message });

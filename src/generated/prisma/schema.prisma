@@ -18,15 +18,33 @@ model User {
   id       Int       @id @default(autoincrement())
   email    String    @unique
   password String
-  role     String
+  role     String    @default("supplier")
   products Product[]
+  profile  Profile?
 }
 
 model Product {
   id     Int    @id @default(autoincrement())
   email  String
-  name   String
-  stocks Int
+  name   String @unique
+  stocks Int    @default(0)
 
-  user User @relation(fields: [email], references: [email], onDelete: Cascade)
+  user  User   @relation(fields: [email], references: [email], onDelete: Cascade)
+  image Image?
+}
+
+model Profile {
+  id      Int    @id @default(autoincrement())
+  email   String @unique
+  picture String
+
+  user User? @relation(fields: [email], references: [email], onDelete: Cascade)
+}
+
+model Image {
+  id      Int     @id @default(autoincrement())
+  name    String? @unique
+  picture String
+
+  product Product? @relation(fields: [name], references: [name], onDelete: Cascade)
 }
