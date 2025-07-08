@@ -1,17 +1,19 @@
 {
-  "name": "checpoint-2",
+  "name": "checpoint-1",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev src/app.ts"
+    "dev": "ts-node-dev --respawn src/app.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^5.1.0"
+    "@prisma/client": "^6.10.1",
+    "express": "^5.1.0",
+    "prisma": "^6.10.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
