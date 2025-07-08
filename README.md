@@ -1,4 +1,4 @@
-Day 4 - Authentication, Authorization, and Security - Checkpoint 2
+Day 5 - Authentication, Authorization, and Security - Checkpoint 2
 
 (Case Login & CRUD Products)
 
