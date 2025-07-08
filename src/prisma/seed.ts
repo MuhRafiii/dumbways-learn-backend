@@ -1,15 +1,20 @@
-import { prisma } from "../prisma/client";
+import { prisma } from "./client";
 
 async function main() {
-  // Clear old data
-  await prisma.user.deleteMany();
-
-  // Create Users
-  const users = await prisma.user.createMany({
+  await prisma.supplier.createMany({
     data: [
-      { name: "Alice", email: "alice@example.com", points: 100 },
-      { name: "Bob", email: "bob@example.com", points: 750 },
-      { name: "Charlie", email: "charlie@example.com", points: 2200 },
+      { name: "Supplier A" },
+      { name: "Supplier B" },
+      { name: "Supplier C" },
+    ],
+  });
+
+  // Seed products
+  await prisma.product.createMany({
+    data: [
+      { name: "Product X", stock: 100 },
+      { name: "Product Y", stock: 200 },
+      { name: "Product Z", stock: 300 },
     ],
   });
 }
