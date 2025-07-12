@@ -10,7 +10,7 @@ import { isSupllier } from "../middlewares/product";
 
 const router = express.Router();
 
-router.get("/products", authenticate, isSupllier, handleGetProducts);
+router.get("/products", authenticate, handleGetProducts);
 router.post("/products/add", authenticate, isSupllier, handleAddProduct);
 router.put("/products/:id", authenticate, isSupllier, handleUpdateProduct);
 router.delete("/products/:id", authenticate, isSupllier, handleDeleteProduct);

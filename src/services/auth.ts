@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import { prisma } from "../prisma/client";
+import { encrypt } from "../utils/encryption";
 import { signToken } from "../utils/jwt";
 
 export async function registerUser(
@@ -27,8 +28,10 @@ export async function loginUser(email: string, password: string) {
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) throw new Error("Wrong password");
 
+  const dataToEncrypt = JSON.stringify({ email, password });
+  const loginData = encrypt(dataToEncrypt);
   const token = signToken({ id: user.id, email: user.email, role: user.role });
-  return { token };
+  return { loginData, token };
 }
 
 export async function loginSupplier(email: string, password: string) {
@@ -40,8 +43,10 @@ export async function loginSupplier(email: string, password: string) {
 
   if (user.role !== "supplier") throw new Error("User is not a supplier");
 
+  const dataToEncrypt = JSON.stringify({ email, password });
+  const loginData = encrypt(dataToEncrypt);
   const token = signToken({ id: user.id, email: user.email, role: user.role });
-  return { token };
+  return { loginData, token };
 }
 
 export async function resetPassword(email: string, password: string) {
