@@ -50,7 +50,13 @@ export async function handleSupplierLogin(req: Request, res: Response) {
   try {
     const { email, password } = req.body;
     const result = await loginSupplier(email, password);
-    res.json({ message: "Login success", ...result });
+    res.cookie("token", result.token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 1000 * 60 * 60 * 24, // 1 hari
+    });
+    res.json({ message: "Login success" });
   } catch (err: any) {
     res.status(401).json({ message: err.message });
   }
